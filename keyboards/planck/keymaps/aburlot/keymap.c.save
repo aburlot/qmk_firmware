@@ -77,10 +77,11 @@ enum planck_keycodes {
 #define CTL_E LCTL_T(KC_ESC)
 #define OS_G LGUI_T(FR_ASTR)
 #define ALT_G LALT_T(FR_MINS)
+#define ALT_TB LALT_T(KC_TAB)
 #define MAJ_E RSFT_T(KC_ENT)
 #define LAYER1 LT(_LAYER1, FR_COMM)
 #define LAYER2 LT(_LAYER2, FR_DOT)
-#define LAYER3 LT(_LAYER3, KC_SPC)
+#define LAYER3 LT(_LAYER3, FR_QUOT)
 #define LAYER4 LT(_LAYER4, FR_DQUO)
 #define FR_LGUI ALGR(FR_W)
 #define FR_RGUI ALGR(FR_X)
@@ -98,10 +99,12 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] =
 				  /* KC_LSFT, KC_W, KC_X,    KC_C,    KC_V,    KC_B,    KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH, KC_ENT , */
 											     /* ) */
    [_LAYER0] = LAYOUT_planck_mit
-   (KC_TAB , TD(TD_A_AGRAV) , FR_Z, KC_E , KC_R  , KC_T  , KC_Y  , TD(TD_U_UGRAV)   , KC_I   , KC_O   , KC_P    , KC_BSPC,
-    CTL_E  , FR_Q , KC_S, KC_D , KC_F  , KC_G  , KC_H  , KC_J   , KC_K   , KC_L   , FR_M    , MAJ_E  ,
-    KC_LSFT, FR_W , KC_X, KC_C , KC_V  , KC_B  , KC_N  , FR_CIRC, FR_UNDS, FR_COLN, KC_UP   , FR_EXLM,
-    CTL_G, LAYER4, OS_G, ALT_G, LAYER1, KC_SPC, LAYER2, FR_QUOT, KC_LEFT, KC_DOWN, KC_RGHT),
+   (
+    ALT_TB , TD(TD_A_AGRAV), FR_Z, KC_E , KC_R  , KC_T  , KC_Y  , TD(TD_U_UGRAV), KC_I   , KC_O   , KC_P , KC_BSPC,
+    CTL_E  , FR_Q	   , KC_S, KC_D , KC_F  , KC_G  , KC_H  , KC_J		, KC_K   , KC_L   , FR_M , MAJ_E  ,
+    KC_LSFT, FR_W	   , KC_X, KC_C , KC_V  , KC_B  , KC_N  , FR_CIRC	, FR_UNDS, FR_COLN, KC_UP, FR_EXLM,
+    CTL_G  , LAYER4	   , OS_G, ALT_G, LAYER1, KC_SPC, LAYER2, LAYER3	, KC_LEFT, KC_DOWN, KC_RGHT
+    ),
 
    /* [_LAYER0] = LAYOUT_planck_mit */
    /* (KC_TAB , TD(TD_A_AGRAV) , KC_Z, KC_E , KC_R  , KC_T  , KC_Y  , TD(TD_U_UGRAV)   , KC_I   , KC_O   , KC_P    , KC_BSPC, */
@@ -122,7 +125,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] =
  */
 [_LAYER1] = LAYOUT_planck_grid
    (
-    KC_TAB , FR_AMPR, FR_TILD, FR_HASH, FR_MINS, FR_GRB, FR_LABK, FR_RABK, FR_LPRN, FR_RPRN, FR_UNDS, KC_BSPC,
+    KC_TAB , FR_AMPR, FR_TILD, FR_HASH, FR_MINS, FR_GRV, FR_LABK, FR_RABK, FR_LPRN, FR_RPRN, FR_UNDS, KC_BSPC,
     KC_DEL , _______, _______, FR_ASTR, FR_PLUS, FR_AT , FR_LGUI, FR_RGUI, KC_LBRC, KC_RBRC, _______, KC_ENT ,
     _______, _______, FR_SLSH, FR_BSLS,  FR_EQL, FR_DLR, FR_PERC, FR_PIPE, KC_LCBR, KC_RCBR, KC_UP  , _______,
     KC_LCTL, _______, _______, KC_LALT, _______, KC_SPC, KC_SPC , _______, _______, KC_LEFT, KC_DOWN, KC_RIGHT
