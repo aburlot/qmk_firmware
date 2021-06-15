@@ -81,8 +81,9 @@ enum planck_keycodes {
 #define MAJ_E RSFT_T(KC_ENT)
 #define LAYER1 LT(_LAYER1, FR_COMM)
 #define LAYER2 LT(_LAYER2, FR_DOT)
-#define LAYER3 LT(_LAYER3, FR_QUOT)
-#define LAYER4 LT(_LAYER4, FR_DQUO)
+/* #define LAYER3 LT(_LAYER3, FR_QUOT) */
+#define LAYER3 LT(_LAYER3, FR_DQUO)
+#define ALTGR RALT_T(FR_QUOT)
 #define FR_LGUI ALGR(FR_W)
 #define FR_RGUI ALGR(FR_X)
 
@@ -103,7 +104,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] =
     ALT_TB , TD(TD_A_AGRAV), FR_Z, KC_E , KC_R  , KC_T  , KC_Y  , TD(TD_U_UGRAV), KC_I   , KC_O   , KC_P , KC_BSPC,
     CTL_E  , FR_Q	   , KC_S, KC_D , KC_F  , KC_G  , KC_H  , KC_J		, KC_K   , KC_L   , FR_M , MAJ_E  ,
     KC_LSFT, FR_W	   , KC_X, KC_C , KC_V  , KC_B  , KC_N  , FR_CIRC	, FR_UNDS, FR_COLN, KC_UP, FR_EXLM,
-    CTL_G  , LAYER4	   , OS_G, ALT_G, LAYER1, KC_SPC, LAYER2, LAYER3	, KC_LEFT, KC_DOWN, KC_RGHT
+    CTL_G  , LAYER3	   , OS_G, ALT_G, LAYER1, KC_SPC, LAYER2, ALTGR 	, KC_LEFT, KC_DOWN, KC_RGHT
     ),
 
    /* [_LAYER0] = LAYOUT_planck_mit */
@@ -114,9 +115,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] =
 
    [_LAYER1] = LAYOUT_planck_mit
    (
-    ALT_TB , FR_EACU, FR_EGRV, FR_HASH, FR_MINS, FR_GRV, FR_LABK, FR_RABK, FR_LPRN, FR_RPRN, KC_DEL , KC_BSPC,
-    CTL_E  , FR_AMPR, FR_TILD, FR_ASTR, FR_PLUS, FR_AT , FR_LGUI, FR_RGUI, FR_LBRC, FR_RBRC, FR_UNDS, KC_ENT ,
-    _______, FR_CCED, FR_SLSH, FR_BSLS,  FR_EQL, FR_DLR, FR_PERC, FR_PIPE, FR_LCBR, FR_RCBR, KC_UP  , KC_RCTL,
+    ALT_TB , FR_EACU, FR_EGRV, FR_HASH, FR_MINS, FR_GRV, FR_LABK, FR_RABK, FR_LPRN, FR_RPRN, _______ , KC_BSPC,
+    CTL_E  , FR_AMPR, FR_TILD, FR_ASTR, FR_PLUS, FR_AT , FR_LGUI, FR_RGUI, FR_LBRC, FR_RBRC, KC_DEL  , KC_ENT ,
+    _______, FR_CCED, FR_SLSH, FR_BSLS,  FR_EQL, FR_DLR, FR_PERC, FR_PIPE, FR_LCBR, FR_RCBR, KC_UP   , KC_RCTL,
     KC_LCTL, _______, _______, KC_LALT, _______, KC_SPC, _______, _______, KC_LEFT, KC_DOWN, KC_RIGHT
     ),
 
@@ -244,6 +245,7 @@ uint8_t muse_offset = 70;
 uint16_t muse_tempo = 50;
 
 bool encoder_update_user(uint8_t index, bool clockwise) {
+/* void encoder_update(bool clockwise) { */
   if (muse_mode) {
     if (IS_LAYER_ON(_LAYER2)) {
       if (clockwise) {
