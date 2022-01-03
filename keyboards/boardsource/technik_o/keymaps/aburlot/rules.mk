@@ -22,3 +22,7 @@ AUDIO_ENABLE = no           # Audio output
 RGB_MATRIX_ENABLE = yes
 RGB_MATRIX_DRIVER = WS2812
 LAYOUTS = ortho_4x12
+
+# AJOUT
+SRC += muse.c
+TAP_DANCE_ENABLE = no

@@ -77,9 +77,9 @@ enum planck_keycodes {
 /* #define RAISE MO(_RAISE) */
 #define CTL_G LCTL_T()
 #define CTL_E LCTL_T(KC_ESC)
-#define OS_G LGUI_T(FR_ASTR)
+#define OS_G LGUI_T()
 #define ALT_G LALT_T(FR_MINS)
-#define ALT_TB LALT_T(KC_TAB)
+#define ALT_TB LALT_T()
 #define MAJ_E RSFT_T(KC_ENT)
 #define LAYER1 LT(_LAYER1, FR_COMM)
 #define LAYER2 LT(_LAYER2, FR_DOT)
@@ -103,10 +103,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] =
 											     /* ) */
    [_LAYER0] = LAYOUT_planck_mit
    (
-    KC_TAB, TD(TD_A_AGRAV), TD(TD_Z_EGRAV), KC_E, KC_R  , KC_T  , KC_Y  , TD(TD_U_UGRAV), KC_I   , KC_O   , KC_P , KC_BSPC,
-    CTL_E  , FR_Q	   , KC_S, KC_D , KC_F  , KC_G  , TD(TD_H_EAIGU)  , KC_J		, KC_K   , KC_L   , FR_M , MAJ_E  ,
-    KC_LSFT, FR_W	   , KC_X, KC_C , KC_V  , KC_B  , KC_N  , FR_CIRC	, FR_UNDS, FR_COLN, KC_UP, FR_EXLM,
-    KC_LCTL, LAYER3	   , KC_LGUI, ALT_G, LAYER1, KC_SPC, LAYER2, ALTGR 	, KC_LEFT, KC_DOWN, KC_RGHT
+    KC_TAB,  TD(TD_A_AGRAV), TD(TD_Z_EGRAV), KC_E,  KC_R,   KC_T,   KC_Y,           TD(TD_U_UGRAV), KC_I,    KC_O,    KC_P,  KC_BSPC,
+    CTL_E,   FR_Q,           KC_S,           KC_D,  KC_F,   KC_G,   TD(TD_H_EAIGU), KC_J,           KC_K,    KC_L,    FR_M,  MAJ_E,
+    KC_LSFT, FR_W,           KC_X,           KC_C,  KC_V,   KC_B,   KC_N,           FR_CIRC,        FR_UNDS, FR_COLN, KC_UP, FR_EXLM,
+    KC_LCTL, LAYER3,         KC_LGUI,        ALT_G, LAYER1, KC_SPC, LAYER2,         ALTGR,          KC_LEFT, KC_DOWN, KC_RGHT
     ),
 
    /* [_LAYER0] = LAYOUT_planck_mit */
@@ -353,3 +353,7 @@ qk_tap_dance_action_t tap_dance_actions[] =
    /* [TD_Y_EAIGU] = ACTION_TAP_DANCE_DOUBLE(FR_Y, FR_EACU), */
    [TD_H_EAIGU] = ACTION_TAP_DANCE_DOUBLE(FR_H, FR_EACU),
   };
+
+/* Local Variables: */
+/* indent-tabs-mode: nil */
+/* End: */
