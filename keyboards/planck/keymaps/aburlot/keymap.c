@@ -16,7 +16,7 @@
 
 #include QMK_KEYBOARD_H
 #include "muse.h"
-#include "keymap_french.h"
+/* #include "keymap_french.h" */
 
 typedef enum {
 	      TD_NONE,
@@ -75,19 +75,21 @@ enum planck_keycodes {
 
 /* #define LOWER MO(_LOWER) */
 /* #define RAISE MO(_RAISE) */
-#define CTL_G LCTL_T()
-#define CTL_E LCTL_T(KC_ESC)
-#define OS_G LGUI_T()
-#define ALT_G LALT_T(FR_MINS)
-#define ALT_TB LALT_T()
-#define MAJ_E RSFT_T(KC_ENT)
-#define LAYER1 LT(_LAYER1, FR_COMM)
-#define LAYER2 LT(_LAYER2, FR_DOT)
-/* #define LAYER3 LT(_LAYER3, FR_QUOT) */
-#define LAYER3 LT(_LAYER3, FR_DQUO)
-#define ALTGR RALT_T(FR_QUOT)
-#define FR_LGUI ALGR(FR_W)
-#define FR_RGUI ALGR(FR_X)
+/* #define CTL_E LCTL_T(KC_ESC) */
+/* #define ALT_G LALT_T(FR_MINS) */
+/* #define MAJ_E RSFT_T(KC_ENT) */
+/* #define LAYER1 LT(_LAYER1, FR_COMM) */
+/* #define LAYER2 LT(_LAYER2, FR_DOT) */
+/* /\* #define LAYER3 LT(_LAYER3, FR_QUOT) *\/ */
+/* #define LAYER3 LT(_LAYER3, FR_DQUO) */
+/* #define ALTGR RALT_T(FR_QUOT) */
+/* #define FR_LGUI ALGR(FR_W) */
+/* #define FR_RGUI ALGR(FR_X) */
+
+#define CTRL_E MT(MOD_LCTL, KC_ESCAPE) //LCTL_T(KC_ESC)
+#define L3_SLSH LT(_LAYER3, KC_BSLASH)
+#define L2_DOT LT(_LAYER2, KC_DOT)
+#define L1_COMA LT(_LAYER1, KC_COMMA)
 
 /*
   Définir une fonction tap_hold pour FR_QUOT et AltGr.
@@ -96,48 +98,71 @@ enum planck_keycodes {
 // Keymaps
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] =
   {
-   /* [_AZERTY] = LAYOUT_planck_grid( */
-				  /* KC_TAB, KC_A, KC_Z, KC_E, KC_R,    KC_T,    KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_BSPC, */
-				  /* KC_ESC, KC_Q, KC_S,    KC_D,    KC_F,    KC_G,    KC_H,    KC_J,    KC_K,    KC_L,    KC_M, KC_QUOT, */
-				  /* KC_LSFT, KC_W, KC_X,    KC_C,    KC_V,    KC_B,    KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH, KC_ENT , */
-											     /* ) */
-   [_LAYER0] = LAYOUT_planck_mit
-   (
-    KC_TAB,  TD(TD_A_AGRAV), TD(TD_Z_EGRAV), KC_E,  KC_R,   KC_T,   KC_Y,           TD(TD_U_UGRAV), KC_I,    KC_O,    KC_P,  KC_BSPC,
-    CTL_E,   FR_Q,           KC_S,           KC_D,  KC_F,   KC_G,   TD(TD_H_EAIGU), KC_J,           KC_K,    KC_L,    FR_M,  MAJ_E,
-    KC_LSFT, FR_W,           KC_X,           KC_C,  KC_V,   KC_B,   KC_N,           FR_CIRC,        FR_UNDS, FR_COLN, KC_UP, FR_EXLM,
-    KC_LCTL, LAYER3,         KC_LGUI,        ALT_G, LAYER1, KC_SPC, LAYER2,         ALTGR,          KC_LEFT, KC_DOWN, KC_RGHT
-    ),
+    [_LAYER0] = LAYOUT_planck_mit
+    (
+     KC_TAB,  KC_A,    KC_Z,    KC_E,    KC_R,    KC_T,     KC_Y,    KC_U,     KC_I,     KC_O,    KC_P,     KC_BSPACE,
+     CTRL_E,  KC_Q,    KC_S,    KC_D,    KC_F,    KC_G,     KC_H,    KC_J,     KC_K,     KC_L,    KC_M,     KC_ENTER,
+     KC_LSFT, KC_W,    KC_X,    KC_C,    KC_V,    KC_B,     KC_N,    KC_QUOTE, KC_SLASH, KC_SCLN, KC_MINUS, L3_SLSH,
+     KC_LCTL, KC_HYPR, KC_LGUI, KC_LALT, L1_COMA, KC_SPACE, L2_DOT,   KC_LEFT,  KC_DOWN, KC_UP,    KC_RIGHT
+     ),
+
+    [_LAYER1] = LAYOUT_planck_mit
+    (
+     KC_TAB,  KC_NO,    KC_AMPERSAND, KC_HASH,  KC_MINUS,    KC_LPRN,     KC_RPRN,     KC_PERCENT, KC_AT,     KC_NO,   KC_DEL,  KC_BSPACE,
+     CTRL_E,  KC_GRAVE, KC_TILDE,     KC_PLUS,  KC_ASTERISK, KC_LBRACKET, KC_RBRACKET, KC_DQUO,    KC_UNDS,   KC_LABK, KC_RABK, KC_ENTER,
+     KC_LSFT, KC_NO,    KC_EXCLAIM,   KC_SLASH, KC_EQUAL,    KC_LCBR,     KC_RCBR,     KC_DOLLAR,  KC_BSLASH, KC_PIPE, KC_NO,   KC_NO,
+     KC_LCTL, KC_HYPR,  KC_LGUI,      KC_LALT,  L1_COMA,     KC_SPACE,     L2_DOT,     KC_LEFT,   KC_DOWN, KC_UP,   KC_RIGHT
+     ),
+
+    [_LAYER2] = LAYOUT_planck_mit
+    (
+     KC_TAB,  KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_HOME,  KC_END,    KC_7,  KC_8,    KC_9,    KC_DEL, KC_BSPACE,
+     CTRL_E,  KC_F5,   KC_F6,   KC_F7,   KC_F8,   KC_PGUP,  KC_PGDOWN, KC_4,  KC_5,    KC_6,    KC_NO,  KC_ENTER,
+     KC_LSFT, KC_F9,   KC_F10,  KC_F11,  KC_F12,  KC_NO,    KC_0,      KC_1,  KC_2,    KC_3,    KC_NO,  KC_RCTL,
+     KC_LCTL, KC_HYPR, KC_LGUI, KC_LALT, L1_COMA, KC_SPACE, KC_NO, KC_LEFT, KC_DOWN, KC_UP,  KC_RIGHT
+     ),
+
+
+    [_LAYER3] = LAYOUT_planck_mit
+    (
+     RESET,   KC_NO,   KC_NO,    KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO,
+     KC_NO,   KC_NO,   KC_NO,    KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO,
+     KC_NO,   KC_NO,   KC_NO,    KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO,
+     RGB_TOG, RGB_MOD, RGB_RMOD, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO
+     ),
+
 
    /* [_LAYER0] = LAYOUT_planck_mit */
-   /* (KC_TAB , TD(TD_A_AGRAV) , KC_Z, KC_E , KC_R  , KC_T  , KC_Y  , TD(TD_U_UGRAV)   , KC_I   , KC_O   , KC_P    , KC_BSPC, */
-   /*  CTL_E  , KC_Q , KC_S, KC_D , KC_F  , KC_G  , KC_H  , KC_J   , KC_K   , KC_L   , KC_M    , MAJ_E  , */
-   /*  KC_LSFT, KC_W , KC_X, KC_C , KC_V  , KC_B  , KC_N  , KC_COMM, KC_DOT, KC_SLSH, KC_UP   , KC_QUOT, */
-   /*  CTL_G, LAYER4, OS_G, ALT_G, LAYER1, KC_SPC, LAYER2, FR_QUOT, KC_LEFT, KC_DOWN, KC_RGHT), */
+   /* ( */
+   /*  KC_TAB,  TD(TD_A_AGRAV), TD(TD_Z_EGRAV), KC_E,  KC_R,   KC_T,   KC_Y,           TD(TD_U_UGRAV), KC_I,    KC_O,    KC_P,  KC_BSPC, */
+   /*  CTL_E,   FR_Q,           KC_S,           KC_D,  KC_F,   KC_G,   TD(TD_H_EAIGU), KC_J,           KC_K,    KC_L,    FR_M,  MAJ_E, */
+   /*  KC_LSFT, FR_W,           KC_X,           KC_C,  KC_V,   KC_B,   KC_N,           FR_CIRC,        FR_UNDS, FR_COLN, KC_UP, FR_EXLM, */
+   /*  KC_LCTL, LAYER3,         KC_LGUI,        ALT_G, LAYER1, KC_SPC, LAYER2,         ALTGR,          KC_LEFT, KC_DOWN, KC_RGHT */
+   /*  ), */
 
-   [_LAYER1] = LAYOUT_planck_mit
-   (
-    ALT_TB , FR_EACU, FR_EGRV, FR_HASH, FR_MINS, FR_GRV, FR_LABK, FR_RABK, FR_LPRN, FR_RPRN, _______ , KC_BSPC,
-    CTL_E  , FR_AMPR, FR_TILD, FR_ASTR, FR_PLUS, FR_AT , FR_LGUI, FR_RGUI, FR_LBRC, FR_RBRC, KC_DEL  , KC_ENT ,
-    _______, FR_CCED, FR_SLSH, FR_BSLS,  FR_EQL, FR_DLR, FR_PERC, FR_PIPE, FR_LCBR, FR_RCBR, KC_UP   , KC_RCTL,
-    KC_LCTL, _______, _______, KC_LALT, _______, KC_SPC, _______, _______, KC_LEFT, KC_DOWN, KC_RIGHT
-    ),
+   /* [_LAYER1] = LAYOUT_planck_mit */
+   /* ( */
+   /*  KC_TAB , FR_EACU, FR_EGRV, FR_HASH, FR_MINS, FR_GRV, FR_LABK, FR_RABK, FR_LPRN, FR_RPRN, _______ , KC_BSPC, */
+   /*  CTL_E  , FR_AMPR, FR_TILD, FR_ASTR, FR_PLUS, FR_AT , FR_LGUI, FR_RGUI, FR_LBRC, FR_RBRC, KC_DEL  , KC_ENT , */
+   /*  _______, FR_CCED, FR_SLSH, FR_BSLS,  FR_EQL, FR_DLR, FR_PERC, FR_PIPE, FR_LCBR, FR_RCBR, KC_UP   , KC_RCTL, */
+   /*  KC_LCTL, _______, _______, KC_LALT, _______, KC_SPC, _______, _______, KC_LEFT, KC_DOWN, KC_RIGHT */
+   /*  ), */
 
-   [_LAYER2] = LAYOUT_planck_mit
-   (
-    KC_TAB , FR_1   , FR_2   , FR_3   , FR_4   , FR_5  , FR_6	, FR_7   , FR_8   , FR_9   , FR_0   , KC_BSPC,
-    CTL_E  , KC_F1  , KC_F2  , KC_F3  , KC_F4  , KC_F5 , KC_F6	, _______, KC_HOME, KC_PGUP, _______, KC_ENT ,
-    _______, KC_F7  , KC_F8  , KC_F9  , KC_F10 , KC_F11, KC_F12	, _______, KC_END , KC_PGDN, KC_UP  , _______,
-    KC_LCTL, _______, _______, KC_LALT, _______, KC_SPC, _______, _______, KC_LEFT, KC_DOWN, KC_RIGHT
-    ),
+   /* [_LAYER2] = LAYOUT_planck_mit */
+   /* ( */
+   /*  KC_TAB , FR_1   , FR_2   , FR_3   , FR_4   , FR_5  , FR_6	, FR_7   , FR_8   , FR_9   , FR_0   , KC_BSPC, */
+   /*  CTL_E  , KC_F1  , KC_F2  , KC_F3  , KC_F4  , KC_F5 , KC_F6	, _______, KC_HOME, KC_PGUP, _______, KC_ENT , */
+   /*  _______, KC_F7  , KC_F8  , KC_F9  , KC_F10 , KC_F11, KC_F12	, _______, KC_END , KC_PGDN, KC_UP  , _______, */
+   /*  KC_LCTL, _______, _______, KC_LALT, _______, KC_SPC, _______, _______, KC_LEFT, KC_DOWN, KC_RIGHT */
+   /*  ), */
 
-   [_LAYER3] = LAYOUT_planck_mit
-   (
-    KC_SLEP, KC_NO  , KC_NO  , KC_NO  , KC_NO  , KC_NO	, KC_NO, KC_WH_U, KC_NO  , KC_WH_D, KC_BRID, KC_BRIU,
-    KC_NO  , KC_NO  , KC_BTN1, KC_BTN2, KC_BTN3, KC_UNDO, KC_NO, KC_WH_L, KC_MS_U, KC_WH_R, KC_NO  , KC_NO  ,
-    KC_MUTE, KC_VOLD, KC_VOLU, KC_MPRV, KC_MPLY, KC_MNXT, KC_NO, KC_MS_L, KC_MS_D, KC_MS_R, KC_UP  , KC_NO  ,
-    KC_NO  , KC_NO  , KC_NO  , KC_NO  , KC_NO  ,  KC_SPC, KC_NO, KC_NO  , KC_LEFT, KC_DOWN, KC_RGHT
-    ),
+   /* [_LAYER3] = LAYOUT_planck_mit */
+   /* ( */
+   /*  KC_SLEP, KC_NO  , KC_NO  , KC_NO  , KC_NO  , KC_NO	, KC_NO, KC_WH_U, KC_NO  , KC_WH_D, KC_BRID, KC_BRIU, */
+   /*  KC_NO  , KC_NO  , KC_BTN1, KC_BTN2, KC_BTN3, KC_UNDO, KC_NO, KC_WH_L, KC_MS_U, KC_WH_R, KC_NO  , KC_NO  , */
+   /*  KC_MUTE, KC_VOLD, KC_VOLU, KC_MPRV, KC_MPLY, KC_MNXT, KC_NO, KC_MS_L, KC_MS_D, KC_MS_R, KC_UP  , KC_NO  , */
+   /*  KC_NO  , KC_NO  , KC_NO  , KC_NO  , KC_NO  ,  KC_SPC, KC_NO, KC_NO  , KC_LEFT, KC_DOWN, KC_RGHT */
+   /*  ), */
 
 
 /* Adjust (Lower + Raise)
@@ -335,8 +360,8 @@ void matrix_scan_user(void) {
 
 bool music_mask_user(uint16_t keycode) {
   switch (keycode) {
-    case LAYER2:
-    case LAYER1:
+    case _LAYER2:
+    case _LAYER1:
       return false;
     default:
       return true;
@@ -347,11 +372,11 @@ bool music_mask_user(uint16_t keycode) {
 
 qk_tap_dance_action_t tap_dance_actions[] =
   {
-   [TD_U_UGRAV] = ACTION_TAP_DANCE_DOUBLE(FR_U, FR_UGRV),
-   [TD_A_AGRAV] = ACTION_TAP_DANCE_DOUBLE(FR_A, FR_AGRV),
-   [TD_Z_EGRAV] = ACTION_TAP_DANCE_DOUBLE(FR_Z, FR_EGRV),
+   /* [TD_U_UGRAV] = ACTION_TAP_DANCE_DOUBLE(FR_U, FR_UGRV), */
+   /* [TD_A_AGRAV] = ACTION_TAP_DANCE_DOUBLE(FR_A, FR_AGRV), */
+   /* [TD_Z_EGRAV] = ACTION_TAP_DANCE_DOUBLE(FR_Z, FR_EGRV), */
    /* [TD_Y_EAIGU] = ACTION_TAP_DANCE_DOUBLE(FR_Y, FR_EACU), */
-   [TD_H_EAIGU] = ACTION_TAP_DANCE_DOUBLE(FR_H, FR_EACU),
+   /* [TD_H_EAIGU] = ACTION_TAP_DANCE_DOUBLE(FR_H, FR_EACU), */
   };
 
 /* Local Variables: */
