@@ -91,8 +91,8 @@ enum planck_keycodes {
 // From technik
 #define CTRL_E MT(MOD_LCTL, KC_ESCAPE) //LCTL_T(KC_ESC)
 #define L3_SLSH LT(LAYER3, KC_BSLASH)
-#define L2_DOT LT(LAYER2, KC_DOT)
-#define L1_COMA LT(LAYER1, KC_COMMA)
+#define L2_DOT LT(_LAYER2, KC_DOT)
+#define L1_COMA LT(_LAYER1, KC_COMMA)
 
 /*
   Définir une fonction tap_hold pour FR_QUOT et AltGr.
@@ -106,13 +106,23 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] =
 				  /* KC_ESC, KC_Q, KC_S,    KC_D,    KC_F,    KC_G,    KC_H,    KC_J,    KC_K,    KC_L,    KC_M, KC_QUOT, */
 				  /* KC_LSFT, KC_W, KC_X,    KC_C,    KC_V,    KC_B,    KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH, KC_ENT , */
 											     /* ) */
+   /* [_LAYER0] = LAYOUT_planck_mit */
+   /* ( */
+   /*  KC_TAB,  TD(TD_A_AGRAV), TD(TD_Z_EGRAV), KC_E,  KC_R,   KC_T,   KC_Y,           TD(TD_U_UGRAV), KC_I,    KC_O,    KC_P,  KC_BSPC, */
+   /*  CTL_E,   FR_Q,           KC_S,           KC_D,  KC_F,   KC_G,   TD(TD_H_EAIGU), KC_J,           KC_K,    KC_L,    FR_M,  MAJ_E, */
+   /*  KC_LSFT, FR_W,           KC_X,           KC_C,  KC_V,   KC_B,   KC_N,           FR_CIRC,        FR_UNDS, FR_COLN, KC_UP, FR_EXLM, */
+   /*  KC_LCTL, LAYER3,         KC_LGUI,        ALT_G, LAYER1, KC_SPC, LAYER2,         ALTGR,          KC_LEFT, KC_DOWN, KC_RGHT */
+   /*  ), */
+
+   // Layer0 du technik
    [_LAYER0] = LAYOUT_planck_mit
-   (
-    KC_TAB,  TD(TD_A_AGRAV), TD(TD_Z_EGRAV), KC_E,  KC_R,   KC_T,   KC_Y,           TD(TD_U_UGRAV), KC_I,    KC_O,    KC_P,  KC_BSPC,
-    CTL_E,   FR_Q,           KC_S,           KC_D,  KC_F,   KC_G,   TD(TD_H_EAIGU), KC_J,           KC_K,    KC_L,    FR_M,  MAJ_E,
-    KC_LSFT, FR_W,           KC_X,           KC_C,  KC_V,   KC_B,   KC_N,           FR_CIRC,        FR_UNDS, FR_COLN, KC_UP, FR_EXLM,
-    KC_LCTL, LAYER3,         KC_LGUI,        ALT_G, LAYER1, KC_SPC, LAYER2,         ALTGR,          KC_LEFT, KC_DOWN, KC_RGHT
-    ),
+    (
+     KC_TAB,  KC_A,    KC_Z,    KC_E,    KC_R,    KC_T,     KC_Y,    KC_U,     KC_I,     KC_O,    KC_P,     KC_BSPACE,
+     CTRL_E,  KC_Q,    KC_S,    KC_D,    KC_F,    KC_G,     KC_H,    KC_J,     KC_K,     KC_L,    KC_M,     KC_ENTER,
+     KC_LSFT, KC_W,    KC_X,    KC_C,    KC_V,    KC_B,     KC_N,    KC_QUOTE, KC_SLASH, KC_SCLN, KC_MINUS, L3_SLSH,
+     KC_LCTL, KC_RALT, KC_LGUI, KC_LALT, L1_COMA, KC_SPACE, L2_DOT,   KC_LEFT,  KC_DOWN, KC_UP,    KC_RIGHT
+     ),
+
 
    /* [_LAYER0] = LAYOUT_planck_mit */
    /* (KC_TAB , TD(TD_A_AGRAV) , KC_Z, KC_E , KC_R  , KC_T  , KC_Y  , TD(TD_U_UGRAV)   , KC_I   , KC_O   , KC_P    , KC_BSPC, */
