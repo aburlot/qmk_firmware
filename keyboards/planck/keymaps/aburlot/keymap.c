@@ -227,7 +227,7 @@ bool music_mask_user(uint16_t keycode) {
     return true;
   }
 }
-/* Local Variables: */
-/* indent-tabs-mode: nil */
-/* eval: (highlight-symbol "KC_NO") */
-/* End: */
+// Local Variables:
+// indent-tabs-mode: nil
+// eval: (highlight-phrase "KC_NO")
+// End:
