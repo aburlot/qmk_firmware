@@ -45,7 +45,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    QK_BOOT, KC_NO,   KC_NO,    KC_NO,   KC_NO,   KC_BRIU, KC_BRID, KC_NO, KC_NO, KC_MPLY, KC_MNXT, KC_NO,
    KC_NO,   KC_NO,   KC_NO,    KC_NO,   KC_MUTE, KC_VOLU, KC_VOLD, KC_NO, KC_NO, KC_NO,   KC_NO,   KC_NO,
    KC_NO,   KC_NO,   KC_NO,    KC_CALC, KC_NO,   KC_NO,   KC_NO,   KC_NO, KC_NO, KC_NO,   KC_NO,   KC_NO,
-   RGB_TOG, RGB_MOD, RGB_RMOD, KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO, KC_NO, KC_NO,   KC_NO,   KC_NO
+   RM_TOGG, RM_NEXT, RM_PREV,  KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO, KC_NO, KC_NO,   KC_NO,   KC_NO
    )
 };
 
