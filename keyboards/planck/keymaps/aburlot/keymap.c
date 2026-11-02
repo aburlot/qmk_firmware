@@ -70,10 +70,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   [_LAYER3] = LAYOUT_ortho_4x12
   (
-   RESET,   KC_NO,   KC_NO,    KC_NO,   KC_NO,   KC_BRIU, KC_BRID, KC_NO, KC_NO, KC_MPLY, KC_MNXT, KC_NO,
-   KC_NO,   KC_NO,   KC_NO,    KC_NO,   KC_MUTE, KC_VOLU, KC_VOLD, KC_NO, KC_NO, KC_NO,   KC_NO,   KC_NO,
-   KC_NO,   KC_NO,   KC_NO,    KC_CALC, KC_NO,   KC_NO,   KC_NO,   KC_NO, KC_NO, KC_NO,   KC_NO,   KC_NO,
-   RGB_TOG, RGB_MOD, RGB_RMOD, KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO, KC_NO, KC_NO,   KC_NO,   KC_NO
+   RESET,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_BRIU, KC_BRID, KC_NO, KC_NO, KC_MPLY, KC_MNXT, KC_NO,
+   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_MUTE, KC_VOLU, KC_VOLD, KC_NO, KC_NO, KC_NO,   KC_NO,   KC_NO,
+   KC_NO,   KC_NO,   KC_NO,   KC_CALC, KC_NO,   KC_NO,   KC_NO,   KC_NO, KC_NO, KC_NO,   KC_NO,   KC_NO,
+   RM_TOGG, RM_NEXT, RM_PREV, KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO, KC_NO, KC_NO,   KC_NO,   KC_NO
    ),
 
   [_ADJUST] = LAYOUT_ortho_4x12
@@ -150,13 +150,13 @@ bool encoder_update_user(uint8_t index, bool clockwise) {
   } else {
     if (clockwise) {
 #ifdef MOUSEKEY_ENABLE
-      tap_code(KC_MS_WH_DOWN);
+      tap_code(MS_WHLD);
 #else
       tap_code(KC_PGDN);
 #endif
     } else {
 #ifdef MOUSEKEY_ENABLE
-      tap_code(KC_MS_WH_UP);
+      tap_code(MS_WHLU);
 #else
       tap_code(KC_PGUP);
 #endif
